@@ -4,7 +4,7 @@ const scss = require("gulp-sass")(require("sass"));
 const concat = require("gulp-concat");
 const uglify = require("gulp-uglify-es").default;
 const browserSync = require("browser-sync").create();
-// const autoprefixer = require('gulp-autoprefixer');
+const autoprefixer = require('gulp-autoprefixer');
 const clean = require("gulp-clean");
 const avif = require("gulp-avif");
 const webp = require("gulp-webp");
@@ -80,7 +80,7 @@ function scripts() {
 function styles() {
   return (
     src("app/scss/style.scss")
-      // .pipe(autoprefixer({overrideBrowserslist: ['last 10 version']}))
+      .pipe(autoprefixer({overrideBrowserslist: ['last 10 version']}))
       .pipe(concat("style.min.css")) //Совмещает файлы и создает новый min.css
       .pipe(scss({ outputStyle: "compressed" })) //Здесь минифицируется css
       .pipe(dest("app/css"))
